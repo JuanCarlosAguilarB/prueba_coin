@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./index.css"
 import { useFetchPost } from '../../hooks/useFetchPost';
+
+
 function CreateUser() {
   const [handlerFlag, setHandlerFlag] = useState(false);
   const [datos, setDatos] = useState({
@@ -12,8 +14,7 @@ function CreateUser() {
 })
 
 const handleInputChange = (event) => {
-    // console.log(event.target.name)
-    // console.log(event.target.value)
+  console.log(datos)
     setDatos({
         ...datos,
         [event.target.name] : event.target.value
@@ -37,7 +38,7 @@ useEffect(() => {
         .then(response => response.json())
         .then(data => console.log(data.id));
   } catch (error) {
-    console.alert(error);
+    console.log(error,'error');
   }
 }
 setHandlerFlag(false);
@@ -48,8 +49,9 @@ const senData = (event) => {
     setHandlerFlag(true);
      setDatos({  name: '',
      email: '',
-     city:'',});
-     event.target.reset()
+     city:''});
+     
+    //  event.target.reset()
 }
 
   return (
