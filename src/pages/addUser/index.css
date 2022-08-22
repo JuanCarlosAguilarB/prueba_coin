@@ -1,0 +1,13 @@
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-top: 60px;
+
+    flex-direction: column;
+  }
+  
+  .form {
+    width: 450px;
+  }
