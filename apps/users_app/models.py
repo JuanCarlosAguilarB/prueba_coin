@@ -7,12 +7,6 @@ class UserModel(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
 
-
-    def save(self, *args, **kwargs):
-        self.email = self.email.lower()
-        self.city = self.city.lower()
-        super(UserModel, self).save(*args, **kwargs)
-
     REQUIRED_FIELDS = ( 
             'name',
             'city',

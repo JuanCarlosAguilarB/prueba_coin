@@ -1,11 +1,16 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+// import ToastApp from '../../components/toast/ToastApp';
 import "./index.css"
-import { useFetchPost } from '../../hooks/useFetchPost';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function CreateUser() {
+
+
   const [handlerFlag, setHandlerFlag] = useState(false);
   const [datos, setDatos] = useState({
     name: '',
@@ -14,7 +19,7 @@ function CreateUser() {
 })
 
 const handleInputChange = (event) => {
-  console.log(datos)
+  
     setDatos({
         ...datos,
         [event.target.name] : event.target.value
@@ -22,22 +27,34 @@ const handleInputChange = (event) => {
 
 }
 
+
+
+
 useEffect(() => {
 
   if (handlerFlag){
   
     try {
+      console.log(datos);
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
     };
 
-    let url = "http://localhost:8000/api/vi/users/";
+    let url = "http://127.0.0.1:8000/api/v1/users/users/";
     fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => console.log(data.id));
+        // .then(response => response.json())
+        // .then(data => console.log(data.id));
+        .then((response) => {
+          if (response.status === 201) {
+           console.log("CREATED");
+           alert("created")
+          } })
+
+
   } catch (error) {
+    alert("Error, user not created");
     console.log(error,'error');
   }
 }
@@ -47,15 +64,16 @@ setHandlerFlag(false);
 const senData = (event) => {
     event.preventDefault()
     setHandlerFlag(true);
-     setDatos({  name: '',
-     email: '',
-     city:''});
+    //  setDatos({  name: '',
+    //  email: '',
+    //  city:''});
      
-    //  event.target.reset()
+     event.target.reset()
 }
 
   return (
     <Form className='container abs-center' onSubmit={senData}>
+      
       <div className="col-md-3 mb-4">
         <label>
           Name:
