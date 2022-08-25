@@ -10,14 +10,14 @@ API realizada en Django Rest Framework para un sistema de registro de usuarios q
 #### Get all items
 
 ```http
-  http://localhost:8000/api/vi/users/
+http://127.0.0.1:8000/api/v1/users/users/
 ```
 
 
 #### Get item
 
 ```http
-  http://localhost:8000/api/vi/users/${id}
+http://127.0.0.1:8000/api/v1/users/users/${id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -44,7 +44,7 @@ python manage.py runserver
 
 Check the api implementation by navigating to its server address in your preferred browser.
 ```sh
-http://localhost:8000/api/vi/users/
+http://127.0.0.1:8000/api/v1/users/users/
 ```
 ## Run test Api 
 
